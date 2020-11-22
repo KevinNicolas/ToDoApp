@@ -1,68 +1,66 @@
 <template>
-    <div class="contenedor">
-        <h2 class="titulo">{{tituloTarea}}</h2>
-        <el-divider class="divisor" content-position="left">Crear una tarea</el-divider>
-        <div class="tareasInput">
-          <el-input
-          class="tituloInput"
-          v-model="titulo"
-          placeholder="Titulo"
-          clearable
-          maxlength="30"
-          show-word-limit>
-          </el-input>
-          <div @keypress.enter="agregar_tarea">
-            <el-input
-            class="descripsionInput"
-            v-model="desc"
-            placeholder="Descripsion"
-            clearable
-            maxlength="255"
-            show-word-limit></el-input>
-          </div>
-          <div class="botonesInput">
-            <el-button type="success" icon="el-icon-check" @click="agregar_tarea">Agregar tarea</el-button>
-            <el-button type="danger" icon="el-icon-delete" @click="limpiar_inputs">Borrar tarea</el-button>
-          </div>
-        </div>
-        <el-divider class="divisor" content-position="left">Tareas sin terminar</el-divider>
-        <el-collapse v-model="collapseActivo" @change="handleChange">
-          <div
-          v-for="(tarea, indice) in tareas"
-          :key="indice">
-            <el-collapse-item v-if="!tarea[2]" :title="tarea[0]" :name="indice">
-              <div>
-                <h3>{{tarea[2]}}</h3>
-                <p>{{tarea[1]}}</p>
-                <br>
-                <div class="botonesTarea">
-                  <input type="checkbox" v-model="tarea[2]" :id="tarea[0]" />
-                  <label :for="tarea[0]"></label>
-                  <el-button type="danger" icon="el-icon-delete" circle @click="quitar_tarea(tarea[2])"></el-button>
-                </div>
-              </div>
-            </el-collapse-item>
-          </div>
-          <br><br><br>
-          <el-divider class="divisor" content-position="left">Tareas terminadas</el-divider>
-          <div
-          v-for="(tarea, indice) in tareas"
-          :key="indice">
-            <el-collapse-item v-if="tarea[2]" :title="tarea[0]" :name="indice">
-              <div>
-                <h3>{{tarea[2]}}</h3>
-                <p>{{tarea[1]}}</p>
-                <br>
-                <div class="botonesTarea">
-                  <input type="checkbox" v-model="tarea[2]" :id="tarea[0]" />
-                  <label :for="tarea[0]"></label>
-                  <el-button type="danger" icon="el-icon-delete" circle @click="quitar_tarea(tarea[2])"></el-button>
-                </div>
-              </div>
-            </el-collapse-item>
-          </div>
-        </el-collapse>
+  <div class="contenedor">
+    <h2 class="titulo">{{tituloTarea}}</h2>
+    <el-divider class="divisor" content-position="left">Crear una tarea</el-divider>
+    <div class="tareasInput">
+      <el-input
+      class="tituloInput"
+      v-model="titulo"
+      placeholder="Titulo"
+      clearable
+      maxlength="30"
+      show-word-limit>
+      </el-input>
+      <div @keypress.enter="agregar_tarea">
+        <el-input
+        class="descripsionInput"
+        v-model="desc"
+        placeholder="Descripsion"
+        clearable
+        maxlength="255"
+        show-word-limit></el-input>
+      </div>
+      <div class="botonesInput">
+        <el-button type="success" icon="el-icon-check" @click="agregar_tarea">Agregar tarea</el-button>
+        <el-button type="danger" icon="el-icon-delete" @click="limpiar_inputs">Borrar tarea</el-button>
+      </div>
     </div>
+    <el-divider class="divisor" content-position="left">Tareas sin terminar</el-divider>
+    <el-collapse class="collapseBar" v-model="collapseActivo" @change="handleChange">
+      <div
+      v-for="(tarea, indice) in tareas"
+      :key="indice">
+        <el-collapse-item style="color: red;" class="collapseItem" v-if="!tarea[2]" :title="tarea[0]" :name="indice">
+          <div>
+            <p>{{tarea[1]}}</p>
+            <br>
+            <div class="botonesTarea">
+              <input type="checkbox" v-model="tarea[2]" :id="tarea[0]" />
+              <label :for="tarea[0]"></label>
+              <el-button type="danger" icon="el-icon-delete" circle @click="quitar_tarea(tarea[2])"></el-button>
+            </div>
+          </div>
+        </el-collapse-item>
+      </div>
+      <br><br><br>
+      <el-divider class="divisor" content-position="left">Tareas terminadas</el-divider>
+      <div
+      v-for="(tarea, indice) in tareas"
+      :key="indice">
+        <el-collapse-item v-if="tarea[2]" :title="tarea[0]" :name="indice">
+          <div>
+            <p>{{tarea[1]}}</p>
+            <br>
+            <div class="botonesTarea">
+              <input type="checkbox" v-model="tarea[2]" :id="tarea[0]" />
+              <label :for="tarea[0]"></label>
+              <el-button type="danger" icon="el-icon-delete" circle @click="quitar_tarea(tarea[2])"></el-button>
+            </div>
+          </div>
+        </el-collapse-item>
+      </div>
+    </el-collapse>
+  </div>
 </template>
 <script>
 export default {
@@ -121,9 +119,6 @@ export default {
     float: right;
     margin: 20px 60px 0 0;
   }
-  .botonesInput button:nth-child(1){
-    margin-right: 20px;
-  }
   .descripsionInput{
     width: 90%;
     height: auto;
@@ -132,12 +127,8 @@ export default {
   .botonesTarea button{
     margin-left: 50px;
   }
-  .titulo > .el-button{
-    opacity: 0;
-    transition: .3s;
-  }
-  .titulo:hover > .el-button{
-    opacity: 1;
+  .contenedor .collapseBar .collapseItem .titulo{
+    color: green;
   }
   /*estilooos*/
   input[type="checkbox"] {
@@ -174,5 +165,28 @@ export default {
   }
   input[type="checkbox"]:checked + label::after {
     border: 2px solid #53c245;
+  }
+  @media screen and (max-width: 600px){
+    .contenedor .tareasInput .tituloInput{
+      width: 100%;
+      margin: 0;
+    }
+    .contenedor .tareasInput .descripsionInput{
+      width: 100%;
+      margin: 10px 0 0 0;
+    }
+    .contenedor .tareasInput .botonesInput{
+      float: none;
+      width: 100%;
+      margin: 10px 0;
+      padding: 0;
+    }
+    .contenedor .tareasInput .botonesInput button{
+      font-size: 14px;
+      width: calc(50% - 40px);
+      padding: 10px 0px;
+      margin: 0;
+      display: inline;
+    }
   }
 </style>

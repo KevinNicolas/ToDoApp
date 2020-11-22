@@ -1,11 +1,7 @@
 <template>
     <div class="cabecera">
-        <img class="logo" src="../static/svg/logo.svg" alt="Logo">
-        <h1 class="titulo">ToDoList</h1>
-        <div class="usuario">
-            <el-button class="botonUsuario" type="text">Ingresar</el-button>
-            <el-button class="botonUsuario" type="text">Registrarse</el-button>
-        </div>
+      <img class="logo" src="../static/svg/logo.svg" alt="Logo">
+      <h1 class="titulo">ToDoList</h1>
     </div>
 </template>
 
@@ -13,7 +9,6 @@
 export default {
 }
 </script>
-
 <style scoped>
     .cabecera{
         background-color: #13293d;
@@ -34,9 +29,6 @@ export default {
         margin-left: 10px;
         width: 70%;
         font-size: 28px;
-    }
-    .usuario .botonUsuario:nth-child(2){
-        margin-left: 20px;
     }
     @media screen and (max-width: 850px){
         .titulo{
