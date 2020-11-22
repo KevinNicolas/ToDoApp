@@ -1,20 +1,27 @@
-# devactory
+# ToDoApp
 
-## Build Setup
+## Acerca de la pagina
+ Pagina web SPA (single-page application) orientada a la administracion de tareas, estas mismas pueden ser marcadas como terminadas y clasificadas por categorias.
+ Se utilizaron los frameworks "Vue", "Nuxtjs", la herramienta "element UI" y el entorno "Node js".
+
+## Pasos para la instalacion con Node-js [npm]
 
 ```bash
-# install dependencies
+# instalar nuxtjs
+$ npm install nuxtjs -g
+
+# instalar las demas dependencias
 $ npm install
 
-# serve with hot reload at localhost:3000
+# Iniciar el proyecto localmente en modo de desarrollo
 $ npm run dev
 
-# build for production and launch server
+# Construir el proyecto para la produccion
 $ npm run build
 $ npm run start
 
-# generate static project
+# Generar proyecto estatico
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Mas detalles: [Nuxt.js docs](https://nuxtjs.org).
